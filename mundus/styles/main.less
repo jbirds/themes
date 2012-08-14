@@ -1,0 +1,407 @@
+@import 'preboot';
+@import '//fonts.googleapis.com/css?family=Average&.css';
+@import 'variables';
+
+#reset > .global-reset();
+
+body {
+  background: ~`("@{background-color}" != "#ffffff") ? "@{background-color}" : "url("+@{base-url}+"/images/dark_dotted.png) repeat top left"` !important;
+}
+
+#pop {
+
+  .headline-font() {
+    font-family: @headline-font-family;
+    font-weight: @headline-font-weight;
+  }
+
+  .border-box () {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+
+  padding-top: @baseline;
+
+  #main-content {
+    background: #fff;
+    padding: @baseline - 1px @baseline @baseline @baseline;
+    .box-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+  }
+
+  .asset .description, .asset .content, .asset .description p, .asset .content p, .asset .content ul, .asset .content ol, .asset .content li, .asset .description ul, .asset .description ol, .asset .description li {
+    font-family: "Average", "Times New Roman", serif;
+    text-align: left;
+    color: @text-color;
+    font-size: @base-font-size;
+    line-height: @baseline;
+  }
+
+  .asset .description a, .asset .content a {
+    color: @accent-color;
+    text-decoration: underline;
+  }
+
+  .asset .description {
+    margin-top: @baseline - 10;
+  }
+
+  .asset-type-text .content, .asset .description {
+    ul, ol {
+      margin: @baseline 0 @baseline 1.5em;
+    }
+    ul li {
+      list-style-type: disc;
+    }
+    ol li {
+      list-style-type: decimal;
+    }
+  }
+
+  i, em {
+    font-style: italic;
+  }
+
+  b, strong {
+    font-weight: 700;
+  }
+
+  #pop-title {
+    .headline-font();
+    font-size: 60px;
+    line-height: @baseline * 4;
+    color: @accent-color;
+    padding-bottom: @baseline - 4px;
+    margin-bottom: @baseline;
+    border-bottom: 4px double #ccc;
+    text-align: center;
+  }
+
+  #main-content {
+    width: 940px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    position: relative;
+    .box-shadow(0 0 15px rgba(0, 0, 0, 0.35) ~',' inset 0 0 50px rgba(0, 0, 0, 0.1));
+  }
+
+  .region .columnizer-row {
+    margin-bottom: @baseline * 2;
+  }
+
+  #top-region {
+    .border-box();
+    float: left;
+    width: 940px;
+    margin: 0 @baseline @baseline * 2 0;
+    /*background: #ccc url("@{base-url}/images/") repeat top left;*/
+    /*float: left;
+    width: 700px;
+    @border-bottom: 4px;
+    margin: 0 @baseline ((@baseline * 2) - @border-bottom) 0;
+    .border-box();
+    padding: @baseline;
+    background-color: fade(desaturate(@compliment-color, 50%), 35%);
+    .box-shadow(inset 0 0 15px rgba(0, 0, 0, 0.15));
+    .border-radius(0 0 15px 0);
+    border-bottom: @border-bottom double desaturate(@compliment-color, 80%);*/
+    .asset h2 {
+      padding-left: 0;
+      background-color: transparent;
+      &::before, &::after {
+        display: none;
+      }
+    }
+    .columnizer-row {
+      margin-top: @baseline * 2;
+      margin-bottom: 0;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  #main-region {
+    float: left;
+    width: (@column-width * 12) + (@baseline * 11);
+    margin-right: @baseline;
+    .columnizer-row.columnizer-cols2 {
+      .columnizer-col.first {
+        margin-left: 0;
+      }
+      .columnizer-col {
+        width: (@column-width * 6) + (@baseline * 5);
+        margin-left: @baseline;
+      }
+    }
+  }
+
+  #sidebar-region {
+    float: right;
+    width: (@column-width * 4) + (@baseline * 3);
+  }
+
+  .asset h2 {
+    .headline-font();
+    font-size: @base-font-size + 6px;
+    .border-box();
+    line-height: @baseline * 2;
+    position: relative;
+    color: @accent-color;
+    display: block;
+  }
+
+  .asset-type-videogroup .content, .asset-type-imagegroup .content {
+    .border-box();
+    border: 1px solid #ddd;
+    background-color: #fff;
+    position: relative;
+    .box-shadow(0 0 4px rgba(0, 0, 0, 0.2) ~',' inset 0 0 50px rgba(0, 0, 0, 0.1));
+    z-index: 1;
+    &:before, &:after {
+      position: absolute;
+      width: 40%;
+      height: 10px;
+      content: ' ';
+      left: 5px;
+      bottom: 6px;
+      background: transparent !important;
+      -webkit-transform: skew(-5deg) rotate(-5deg);
+      -moz-transform: skew(-5deg) rotate(-5deg);
+      -ms-transform: skew(-5deg) rotate(-5deg);
+      -o-transform: skew(-5deg) rotate(-5deg);
+      transform: skew(-5deg) rotate(-5deg);
+      .box-shadow(0 8px 12px rgba(0, 0, 0, 0.3));
+      z-index: -1;
+    }
+    &:after {
+      left: auto;
+      right: 5px;
+      -webkit-transform: skew(5deg) rotate(5deg);
+      -moz-transform: skew(5deg) rotate(5deg);
+      -ms-transform: skew(5deg) rotate(5deg);
+      -o-transform: skew(5deg) rotate(5deg);
+      transform: skew(5deg) rotate(5deg);
+    }
+
+    .populr-video-player, .nivoSlider {
+      border: 5px solid #fff;
+      .box-shadow(none);
+      background-color: #fff;
+    }
+  }
+
+  .asset-type-imagegroup .content img {
+    display: block;
+    border: 5px solid #fff;
+    /*.border-box();*/
+  }
+
+  // .asset-type-videogroup .content .projekktor {
+  //   display: block;
+  //   border: 5px solid #fff;
+  // }
+
+  #top-region {
+    .asset-type-videogroup,
+    .asset-type-imagegroup {
+      &.asset-size-1 .content {
+        &:before, &:after {
+          bottom: 16px;
+        }
+      }
+    }
+
+    .asset h2 {
+      text-align: center;
+    }
+
+    .asset .description, .asset .content, .asset .description p, .asset .content p, .asset .content ul, .asset .content ol, .asset .content li, .asset .description ul, .asset .description ol, .asset .description li {
+      text-align: center;
+      font-size: @base-font-size * 2;
+      line-height: @baseline * 2;
+    }
+  }
+
+  #main-region {
+    .asset-type-videogroup,
+    .asset-type-imagegroup {
+      &.asset-size-1 .content {
+        &:before, &:after {
+          bottom: 12px;
+        }
+      }
+      &.asset-size-2 .content {
+        &:before, &:after {
+          bottom: 6px;
+        }
+      }
+    }
+  }
+
+  .nivoSlider {
+    position: relative;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+
+    a {
+      border: 0;
+      display: block;
+    }
+  }
+
+  .image-slideshow {
+    .clearfix();
+    margin-bottom: 0;
+    img {
+      float: left;
+    }
+  }
+
+  .documents li {
+    margin-bottom: @baseline / 2;
+    &:first-child {
+      margin-top: 0;
+    }
+    .file-extension {
+      margin-right: 5px;
+    }
+  }
+
+  .file-extension {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    text-indent: -9999px;
+    vertical-align: middle;
+    background: transparent url("@{base-url}/images/file-icons.png") no-repeat -128px -224px;
+    &.file-extension-3gp { background-position: 0px 0px; }
+    &.file-extension-7z { background-position: -32px 0px; }
+    &.file-extension-ace { background-position: 0px -32px; }
+    &.file-extension-ai { background-position: -32px -32px; }
+    &.file-extension-aif { background-position: -64px 0px; }
+    &.file-extension-aiff { background-position: -64px -32px; }
+    &.file-extension-amr { background-position: 0px -64px; }
+    &.file-extension-asf { background-position: -32px -64px; }
+    &.file-extension-asx { background-position: -64px -64px; }
+    &.file-extension-bat { background-position: -96px 0px; }
+    &.file-extension-bin { background-position: -96px -32px; }
+    &.file-extension-bmp { background-position: -96px -64px; }
+    &.file-extension-bup { background-position: 0px -96px; }
+    &.file-extension-cab { background-position: -32px -96px; }
+    &.file-extension-cbr { background-position: -64px -96px; }
+    &.file-extension-cda { background-position: -96px -96px; }
+    &.file-extension-cdl { background-position: -128px 0px; }
+    &.file-extension-cdr { background-position: -128px -32px; }
+    &.file-extension-chm { background-position: -128px -64px; }
+    &.file-extension-dat { background-position: -128px -96px; }
+    &.file-extension-divx { background-position: 0px -128px; }
+    &.file-extension-dll { background-position: -32px -128px; }
+    &.file-extension-dmg { background-position: -64px -128px; }
+    &.file-extension-doc { background-position: -96px -128px; }
+    &.file-extension-docx { background-position: -96px -128px; }
+    &.file-extension-dss { background-position: -128px -128px; }
+    &.file-extension-dvf { background-position: -160px 0px; }
+    &.file-extension-dwg { background-position: -160px -32px; }
+    &.file-extension-eml { background-position: -160px -64px; }
+    &.file-extension-eps { background-position: -160px -96px; }
+    &.file-extension-exe { background-position: -160px -128px; }
+    &.file-extension-fla { background-position: 0px -160px; }
+    &.file-extension-flv { background-position: -32px -160px; }
+    &.file-extension-gif { background-position: -64px -160px; }
+    &.file-extension-gz { background-position: -96px -160px; }
+    &.file-extension-hqx { background-position: -128px -160px; }
+    &.file-extension-htm { background-position: -160px -160px; }
+    &.file-extension-html { background-position: -192px 0px; }
+    &.file-extension-ifo { background-position: -192px -32px; }
+    &.file-extension-indd { background-position: -192px -64px; }
+    &.file-extension-iso { background-position: -192px -96px; }
+    &.file-extension-jar { background-position: -192px -128px; }
+    &.file-extension-jpeg { background-position: -192px -160px; }
+    &.file-extension-jpg { background-position: 0px -192px; }
+    &.file-extension-lnk { background-position: -32px -192px; }
+    &.file-extension-log { background-position: -64px -192px; }
+    &.file-extension-m4a { background-position: -96px -192px; }
+    &.file-extension-m4b { background-position: -128px -192px; }
+    &.file-extension-m4p { background-position: -160px -192px; }
+    &.file-extension-m4v { background-position: -192px -192px; }
+    &.file-extension-mcd { background-position: -224px 0px; }
+    &.file-extension-mdb { background-position: -224px -32px; }
+    &.file-extension-mid { background-position: -224px -64px; }
+    &.file-extension-mov { background-position: -224px -96px; }
+    &.file-extension-mp2 { background-position: -224px -128px; }
+    &.file-extension-mp4 { background-position: -224px -160px; }
+    &.file-extension-mpeg { background-position: -224px -192px; }
+    &.file-extension-mpg { background-position: 0px -224px; }
+    &.file-extension-msi { background-position: -32px -224px; }
+    &.file-extension-mswmm { background-position: -64px -224px; }
+    &.file-extension-ogg { background-position: -96px -224px; }
+    &.file-extension-page_white { background-position: -128px -224px; }
+    &.file-extension-pdf { background-position: -160px -224px; }
+    &.file-extension-png { background-position: -192px -224px; }
+    &.file-extension-pps { background-position: -224px -224px; }
+    &.file-extension-ps { background-position: -256px 0px; }
+    &.file-extension-psd { background-position: -256px -32px; }
+    &.file-extension-pst { background-position: -256px -64px; }
+    &.file-extension-ptb { background-position: -256px -96px; }
+    &.file-extension-pub { background-position: -256px -128px; }
+    &.file-extension-qbb { background-position: -256px -160px; }
+    &.file-extension-qbw { background-position: -256px -192px; }
+    &.file-extension-qxd { background-position: -256px -224px; }
+    &.file-extension-ram { background-position: 0px -256px; }
+    &.file-extension-rar { background-position: -32px -256px; }
+    &.file-extension-rm { background-position: -64px -256px; }
+    &.file-extension-rmvb { background-position: -96px -256px; }
+    &.file-extension-rtf { background-position: -128px -256px; }
+    &.file-extension-sea { background-position: -160px -256px; }
+    &.file-extension-ses { background-position: -192px -256px; }
+    &.file-extension-sit { background-position: -224px -256px; }
+    &.file-extension-sitx { background-position: -256px -256px; }
+    &.file-extension-ss { background-position: -288px 0px; }
+    &.file-extension-swf { background-position: -288px -32px; }
+    &.file-extension-tgz { background-position: -288px -64px; }
+    &.file-extension-thm { background-position: -288px -96px; }
+    &.file-extension-tif { background-position: -288px -128px; }
+    &.file-extension-tmp { background-position: -288px -160px; }
+    &.file-extension-torrent { background-position: -288px -192px; }
+    &.file-extension-ttf { background-position: -288px -224px; }
+    &.file-extension-txt { background-position: -288px -256px; }
+    &.file-extension-vcd { background-position: 0px -288px; }
+    &.file-extension-vob { background-position: -32px -288px; }
+    &.file-extension-wav { background-position: -64px -288px; }
+    &.file-extension-wma { background-position: -96px -288px; }
+    &.file-extension-wmv { background-position: -128px -288px; }
+    &.file-extension-wps { background-position: -160px -288px; }
+    &.file-extension-xls { background-position: -192px -288px; }
+    &.file-extension-xlsx { background-position: -192px -288px; }
+    &.file-extension-xpi { background-position: -224px -288px; }
+    &.file-extension-zip { background-position: -256px -288px; }
+  }
+
+  .asset-type-videogroup .playlist {
+    margin: 10px 0 0 -10px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .asset-type-videogroup .playlist li {
+    list-style: none;
+    float: left;
+    margin-left: 10px;
+  }
+
+  .asset-type-videogroup video {
+    display: block;
+  }
+
+}

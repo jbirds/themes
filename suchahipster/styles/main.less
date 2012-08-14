@@ -1,0 +1,480 @@
+@import 'preboot';
+@import 'variables';
+
+#reset > .global-reset();
+
+#pop {
+
+  .headline-font() {
+    font-family: @headline-font-family;
+    font-weight: @headline-font-weight;
+  }
+
+  width: 866px;
+  margin: 0 auto;
+  background: transparent url("@{base-url}/images/siderails.png") repeat-y top left;
+  font-family: 'Helvetica', Arial, sans-serif;
+  @font-size: 14px;
+  font-size: @font-size;
+  line-height: @font-size * 1.25;
+  color: @text-color;
+  text-align: left;
+
+  .asset .description, .asset .content, .asset .description p, .asset .content p, .asset .content ul, .asset .content ol, .asset .content li, .asset .description ul, .asset .description ol, .asset .description li {
+    color: @text-color;
+    @font-size: 14px;
+    font-size: @font-size !important;
+    line-height: @baseline;
+  }
+
+  .asset .description a, .asset .content a {
+    color: @accent-color;
+    text-decoration: underline;
+  }
+
+  .asset-type-text .content, .asset .description {
+    ul, ol {
+      margin: (@baseline / 2) 0 (@baseline / 2) 1em;
+    }
+    ul li {
+      list-style-type: disc;
+    }
+    ol li {
+      list-style-type: decimal;
+    }
+  }
+
+  .asset .description {
+    margin-top: 0;
+  }
+
+  i, em {
+    font-style: italic;
+  }
+
+  b, strong {
+    font-weight: 700;
+  }
+
+  #main-content {
+    width: 820px;
+    margin-left: 23px;
+    background: transparent url("@{base-url}/images/bg.jpg") repeat-y top left;
+  }
+
+  #pop-title {
+    display: block;
+    .headline-font();
+    color: #fff;
+    @font-size: 68px;
+    font-size: @font-size;
+    line-height: @font-size * 1.3;
+    text-transform: uppercase;
+    text-align: center;
+    background: transparent url("@{base-url}/images/black-bg.png") repeat top left;
+    .box-shadow(inset 0px -6px 6px -6px rgba(0, 0, 0, 0.3));
+  }
+
+  .outer-title {
+    margin-bottom: 12px;
+    padding-top: 2px;
+    border-top: 5px solid;
+    #translucent > .border(@accent-color, 0.65);
+    .box-shadow(inset 0 5px 1px -5px rgba(0, 0, 0, 0.65));
+  }
+
+  .inner-title {
+    padding-bottom: 2px;
+    border-bottom: 18px solid;
+    #translucent > .border(@accent-color, 0.65);
+    .box-shadow(0 1px 6px rgba(0, 0, 0, 0.16) ~',' inset 0 -1px 2px rgba(0, 0, 0, 0.16));
+  }
+
+  .asset-size-1 {
+    text-align: center;
+  }
+
+  .asset-size-1.asset-type-text .content, .asset-size-1 .description {
+    text-align: left;
+  }
+
+
+  #image-gallery-bundle {
+    .gallery(@image-size, @shadow-width: 3px) {
+      .clearfix;
+      text-align: center;
+      @image-half: @image-size / 2;
+      padding: @shadow-width;
+      .gallery-item {
+        position: relative;
+        display: inline-block;
+        list-style: none;
+        border: 4px solid;
+        #translucent > .border(#000, 0.25);
+        .border-radius(@image-half + 15px);
+        .box-shadow(0 0 @shadow-width rgba(0, 0, 0, 0.3));
+
+        .image-preview {
+          position: relative;
+          float: left;
+          border: 5px solid;
+          #translucent > .border(@accent-color, 0.95);
+          .border-radius(@image-half + 12px);
+          background: #fff;
+          padding: 2px;
+
+
+          img {
+            position: relative;
+            z-index: 1;
+            display: block;
+            .border-radius(@image-half + 3px);
+          }
+
+          .magnify {
+            position: absolute;
+            z-index: 2;
+            .border-radius(@image-half + 3px);
+            .square(@image-size);
+            top: 2px;
+            left: 2px;
+            background: transparent url("@{base-url}/images/circle-title-bg.png") no-repeat @image-size @image-size;
+            font-weight: bold;
+            .transition(all linear 0.6s 0.1s);
+            @ratio: @image-size / 190px; /* for the background image */
+            background-size: (570px * @ratio) (240px * @ratio);
+
+            a, .icon {
+              display: block;
+              .square(100%);
+              text-indent: -9999px;
+              background: transparent url("@{base-url}/images/magnify.png") no-repeat center center;
+              .opacity(0);
+              .transition(all linear 0.3s 0.3s);
+
+              &:hover, &.active {
+                .opacity(100);
+              }
+
+              &.loading {
+                background: transparent url("@{base-url}/images/imageloader.gif") no-repeat center center;
+                .opacity(100);
+              }
+            }
+
+            &:hover, &.loading, &.active {
+              .opacity(100);
+              background-position: (-380px * @ratio) (-50px * @ratio);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .columnizer-row {
+    padding: 0 52px;
+    margin: @baseline 0 (@baseline * 2) 0;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .asset-inner {
+    padding-top: @baseline;
+  }
+
+  .asset-title {
+    text-align: center;
+    .headline-font();
+    @font-size: 47px;
+    font-size: @font-size;
+    line-height: @baseline * 2;
+    margin-bottom: @baseline;
+  }
+
+  .asset-type-imagegroup.asset-size-1 {
+    width: 716px;
+    overflow: visible;
+    .content {
+      width: 820px;
+      margin-left: -52px;
+    }
+  }
+
+  .asset-type-imagegroup.asset-size-1 .content .outer {
+    padding-bottom: 2px;
+    border-bottom: 5px solid;
+    #translucent > .border(@accent-color, 0.65);
+    .box-shadow(inset 0 -5px 1px -5px rgba(0, 0, 0, 0.65));
+    .inner {
+      padding-bottom: 2px;
+      border-bottom: 18px solid;
+      #translucent > .border(#000, 0.35);
+      img {
+        display: block;
+      }
+    }
+  }
+
+  .asset-type-imagegroup.asset-size-1 .content ul.gallery {
+    #image-gallery-bundle > .gallery(190px);
+    list-style: none;
+    margin: 0 0 -35px -35px;
+    .gallery-item {
+      margin: 0 0 35px 35px;
+      list-style: none;
+    }
+  }
+
+  .asset-type-imagegroup.asset-size-2 .content {
+    #image-gallery-bundle > .gallery(327px);
+    list-style: none;
+    position: relative;
+    ul {
+      .square(327px);
+      li {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        margin: 0;
+        list-style: none;
+      }
+    }
+    .gallery-item .image-preview .magnify {
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .asset-type-videogroup.asset-size-1 .content ul.playlist, .asset-type-videogroup.asset-size-2 .content ul.playlist {
+    #image-gallery-bundle > .gallery(50px);
+    list-style: none;
+    margin: 10px 0 -10px -10px;
+    width: 350px;
+    .gallery-item {
+      margin: 0 0 10px 10px;
+      list-style: none;
+      .image-preview .magnify a {
+        background: transparent url("@{base-url}/images/play-in-playlist.png") no-repeat center center;
+      }
+    }
+  }
+
+  .asset-type-videogroup.asset-size-1 .content ul.playlist {
+    margin: 10px 0 -10px -62px;
+    width: 820px;
+  }
+
+  .projekktor {
+    .box-shadow(0 0 6px rgba(0, 0, 0, 0.15));
+  }
+
+  .pptimeleft {
+    font-size: 9px !important;
+  }
+
+  .asset-type-documentgroup ul.documents {
+    #image-gallery-bundle > .gallery(52px);
+    text-align: left;
+    li {
+      height: @baseline * 4;
+      display: block;
+    }
+
+    .filesize {
+      font-size: 10px;
+      color: lighten(@text-color, 10%);
+    }
+
+    a {
+      display: inline-block;
+      color: @text-color;
+      text-decoration: none;
+    }
+
+    .gallery-item {
+      vertical-align: middle;
+      margin-right: 5px;
+
+      .image-preview {
+        .square(52px);
+        /* File icons by Fatcow Web Hosting http://www.fatcow.com/free-icons */
+        .file-extension {
+          width: 32px;
+          height: 32px;
+          margin: 9px 0 0 11px;
+          text-indent: -9999px;
+          background: transparent url("@{base-url}/images/file-icons.png") no-repeat -128px -224px;
+          &.file-extension-3gp { background-position: 0px 0px; }
+          &.file-extension-7z { background-position: -32px 0px; }
+          &.file-extension-ace { background-position: 0px -32px; }
+          &.file-extension-ai { background-position: -32px -32px; }
+          &.file-extension-aif { background-position: -64px 0px; }
+          &.file-extension-aiff { background-position: -64px -32px; }
+          &.file-extension-amr { background-position: 0px -64px; }
+          &.file-extension-asf { background-position: -32px -64px; }
+          &.file-extension-asx { background-position: -64px -64px; }
+          &.file-extension-bat { background-position: -96px 0px; }
+          &.file-extension-bin { background-position: -96px -32px; }
+          &.file-extension-bmp { background-position: -96px -64px; }
+          &.file-extension-bup { background-position: 0px -96px; }
+          &.file-extension-cab { background-position: -32px -96px; }
+          &.file-extension-cbr { background-position: -64px -96px; }
+          &.file-extension-cda { background-position: -96px -96px; }
+          &.file-extension-cdl { background-position: -128px 0px; }
+          &.file-extension-cdr { background-position: -128px -32px; }
+          &.file-extension-chm { background-position: -128px -64px; }
+          &.file-extension-dat { background-position: -128px -96px; }
+          &.file-extension-divx { background-position: 0px -128px; }
+          &.file-extension-dll { background-position: -32px -128px; }
+          &.file-extension-dmg { background-position: -64px -128px; }
+          &.file-extension-doc { background-position: -96px -128px; }
+          &.file-extension-docx { background-position: -96px -128px; }
+          &.file-extension-dss { background-position: -128px -128px; }
+          &.file-extension-dvf { background-position: -160px 0px; }
+          &.file-extension-dwg { background-position: -160px -32px; }
+          &.file-extension-eml { background-position: -160px -64px; }
+          &.file-extension-eps { background-position: -160px -96px; }
+          &.file-extension-exe { background-position: -160px -128px; }
+          &.file-extension-fla { background-position: 0px -160px; }
+          &.file-extension-flv { background-position: -32px -160px; }
+          &.file-extension-gif { background-position: -64px -160px; }
+          &.file-extension-gz { background-position: -96px -160px; }
+          &.file-extension-hqx { background-position: -128px -160px; }
+          &.file-extension-htm { background-position: -160px -160px; }
+          &.file-extension-html { background-position: -192px 0px; }
+          &.file-extension-ifo { background-position: -192px -32px; }
+          &.file-extension-indd { background-position: -192px -64px; }
+          &.file-extension-iso { background-position: -192px -96px; }
+          &.file-extension-jar { background-position: -192px -128px; }
+          &.file-extension-jpeg { background-position: -192px -160px; }
+          &.file-extension-jpg { background-position: 0px -192px; }
+          &.file-extension-lnk { background-position: -32px -192px; }
+          &.file-extension-log { background-position: -64px -192px; }
+          &.file-extension-m4a { background-position: -96px -192px; }
+          &.file-extension-m4b { background-position: -128px -192px; }
+          &.file-extension-m4p { background-position: -160px -192px; }
+          &.file-extension-m4v { background-position: -192px -192px; }
+          &.file-extension-mcd { background-position: -224px 0px; }
+          &.file-extension-mdb { background-position: -224px -32px; }
+          &.file-extension-mid { background-position: -224px -64px; }
+          &.file-extension-mov { background-position: -224px -96px; }
+          &.file-extension-mp2 { background-position: -224px -128px; }
+          &.file-extension-mp4 { background-position: -224px -160px; }
+          &.file-extension-mpeg { background-position: -224px -192px; }
+          &.file-extension-mpg { background-position: 0px -224px; }
+          &.file-extension-msi { background-position: -32px -224px; }
+          &.file-extension-mswmm { background-position: -64px -224px; }
+          &.file-extension-ogg { background-position: -96px -224px; }
+          &.file-extension-page_white { background-position: -128px -224px; }
+          &.file-extension-pdf { background-position: -160px -224px; }
+          &.file-extension-png { background-position: -192px -224px; }
+          &.file-extension-pps { background-position: -224px -224px; }
+          &.file-extension-ps { background-position: -256px 0px; }
+          &.file-extension-psd { background-position: -256px -32px; }
+          &.file-extension-pst { background-position: -256px -64px; }
+          &.file-extension-ptb { background-position: -256px -96px; }
+          &.file-extension-pub { background-position: -256px -128px; }
+          &.file-extension-qbb { background-position: -256px -160px; }
+          &.file-extension-qbw { background-position: -256px -192px; }
+          &.file-extension-qxd { background-position: -256px -224px; }
+          &.file-extension-ram { background-position: 0px -256px; }
+          &.file-extension-rar { background-position: -32px -256px; }
+          &.file-extension-rm { background-position: -64px -256px; }
+          &.file-extension-rmvb { background-position: -96px -256px; }
+          &.file-extension-rtf { background-position: -128px -256px; }
+          &.file-extension-sea { background-position: -160px -256px; }
+          &.file-extension-ses { background-position: -192px -256px; }
+          &.file-extension-sit { background-position: -224px -256px; }
+          &.file-extension-sitx { background-position: -256px -256px; }
+          &.file-extension-ss { background-position: -288px 0px; }
+          &.file-extension-swf { background-position: -288px -32px; }
+          &.file-extension-tgz { background-position: -288px -64px; }
+          &.file-extension-thm { background-position: -288px -96px; }
+          &.file-extension-tif { background-position: -288px -128px; }
+          &.file-extension-tmp { background-position: -288px -160px; }
+          &.file-extension-torrent { background-position: -288px -192px; }
+          &.file-extension-ttf { background-position: -288px -224px; }
+          &.file-extension-txt { background-position: -288px -256px; }
+          &.file-extension-vcd { background-position: 0px -288px; }
+          &.file-extension-vob { background-position: -32px -288px; }
+          &.file-extension-wav { background-position: -64px -288px; }
+          &.file-extension-wma { background-position: -96px -288px; }
+          &.file-extension-wmv { background-position: -128px -288px; }
+          &.file-extension-wps { background-position: -160px -288px; }
+          &.file-extension-xls { background-position: -192px -288px; }
+          &.file-extension-xlsx { background-position: -192px -288px; }
+          &.file-extension-xpi { background-position: -224px -288px; }
+          &.file-extension-zip { background-position: -256px -288px; }
+        }
+      }
+    }
+  }
+
+  .asset-type-documentgroup.asset-size-1 .content {
+    text-align: center;
+    ul.documents {
+      display: inline-block;
+    }
+  }
+
+
+  .lightbox {
+    position: fixed;
+    width: 960px;
+    z-index: 100000;
+    top: 45%;
+    left: 50%;
+    margin-left: -480px;
+    opacity: 0;
+    text-align: center;
+    -webkit-transform: scale(10);
+    -moz-transform: scale(10);
+    -o-transform: scale(10);
+    -ms-transform: scale(10);
+    transform: scale(10);
+    .transition(all ease-out 0.5s);
+    cursor: pointer;
+    .close {
+      color: #fff;
+    }
+    img {
+      z-index: 100000;
+      max-width: 960px;
+      margin: 0 auto 2px auto;
+      .box-shadow(0 0 25px 0px rgba(0, 0, 0, 0.65));
+    }
+  }
+
+  .lightbox.animate {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .lightbox-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    #translucent > .background(#000, 0.75);
+    .opacity(0);
+    .transition(opacity ease-out 0.5s);
+    cursor: pointer;
+  }
+
+  .lightbox-bg.animate {
+    z-index: 100;
+    .opacity(100);
+  }
+
+
+}

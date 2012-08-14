@@ -1,0 +1,245 @@
+@import 'preboot';
+@import '//fonts.googleapis.com/css?family=PT+Sans&.css';
+@import 'variables';
+
+#reset > .global-reset();
+
+#pop {
+
+  .border-box () {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .headline-font() {
+    font-family: @headline-font-family;
+    font-weight: @headline-font-weight;
+  }
+
+  padding-top: 20px;
+  text-align: center;
+
+  #main-content {
+    margin: 0 auto 0 40px;
+    text-align: left;
+    width: 940px;
+    padding: 0;
+  }
+
+  #title-region {
+    width: 700px;
+    clear: both;
+  }
+
+  #main-region {
+    width: 700px;
+    background: transparent url("@{base-url}/images/region-bg.png") repeat top left;
+    padding-bottom: 15px;
+  }
+
+  #main-region .asset-container {
+    margin-bottom: 0;
+  }
+
+  .asset {
+    /*margin: 10px;*/
+    text-align: left;
+    .clearfix();
+  }
+
+  .asset.ui-draggable-dragging {
+    background: transparent url("@{base-url}/images/region-bg.png") repeat top left;
+  }
+
+  .asset-inner {
+    padding: 20px 15px;
+  }
+
+  .asset-size-s {
+    width: 220px;
+  }
+
+  .asset-size-m {
+    width: 340px;
+  }
+
+  .asset-size-l {
+    width: 700px;
+  }
+
+  .asset .description, .asset .content, .asset .description p, .asset .content p, .asset .content ul, .asset .content ol, .asset .content li, .asset .description ul, .asset .description ol, .asset .description li {
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: @baseline;
+    color: @text-color;
+  }
+
+ /* .asset .content, .asset .description {
+    float: left;
+    .clearfix();
+  }*/
+
+  .asset .description {
+    margin-top: 0;
+  }
+
+  .asset-type-text .content, .asset .description {
+    ul, ol {
+      margin: (@baseline / 2) 0 (@baseline / 2) 1em;
+    }
+    ul li {
+      list-style-type: disc;
+    }
+    ol li {
+      list-style-type: decimal;
+    }
+  }
+
+  i, em {
+    font-style: italic;
+  }
+
+  b, strong {
+    font-weight: 700;
+  }
+
+  .asset .description a, .asset .content a {
+    color: @accent-color;
+  }
+
+  #pop-title, .asset h2 {
+    .headline-font();
+    line-height: @baseline * 2;
+    color: @text-color;
+  }
+
+  .asset h2 {
+    padding-left: 35px;
+    background: transparent url("@{base-url}/images/sprites.png") no-repeat 0 6px;
+    font-size: 28px;
+    line-height: @baseline * 2;
+    margin-bottom: @baseline;
+  }
+
+  #pop-title {
+    width: 670px;
+    background: transparent url("@{base-url}/images/region-bg.png") repeat top left;
+    padding: 15px;
+    margin-bottom: 10px;
+    font-size: 45px;
+  }
+
+  .asset-type-text h2 {
+    background-position: 0 6px;
+  }
+
+  .asset-type-documentgroup h2 {
+    background-position: -700px 6px;
+  }
+
+  .asset-type-videogroup h2 {
+    background-position: -1400px 6px;
+  }
+
+  .asset-type-imagegroup h2 {
+    background-position: -2100px 6px;
+  }
+
+  .asset-size-m .content video {
+    width: 310px;
+    height: 225px;
+  }
+
+  .asset-type-videogroup .video-js {
+    margin-bottom: 15px;
+  }
+
+  .asset-type-videogroup .playlist {
+    margin: 10px 0 0 -10px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .asset-type-videogroup .playlist li {
+    list-style: none;
+    float: left;
+    margin-left: 10px;
+  }
+
+  .nivoSlider {
+    position: relative;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -o-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: none;
+    }
+
+    a {
+      border: 0;
+      display: block;
+    }
+  }
+
+  .image-slideshow {
+    .clearfix();
+    margin-bottom: 0;
+    img {
+      float: left;
+    }
+  }
+
+  .asset-type-videogroup video {
+    display: block;
+  }
+
+  .asset-type-videogroup .mejs-container video {
+    margin-left: 0;
+  }
+
+  .truncate {
+    height: 310px;
+    overflow: hidden;
+    padding-bottom: 30px;
+  }
+
+  .show-overflow-text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f3f2f2;
+    color: @accent-color;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px 0;
+    z-index: 100;
+    cursor: pointer;
+  }
+
+  .ppcontrols.fade {
+    .opacity(100);
+  }
+
+
+
+  /* new clearfix */
+  .clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
